@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
 <title>Login Form</title>
+
 <style>
   body {
-    height: 768px;
-    font-family: Arial, sans-serif;
+    height: 891px;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #B39C7F;
+    background-image: url('/assets/img/walp.jpeg');
+    background-size: cover;
   }
 
   .container, .submit-container {
@@ -58,28 +61,11 @@
   .intro {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .ptext {
-    font-size: 18px;
-    margin-bottom: 20px;
-    max-width: 600px; /* Ensures the paragraph isn't too wide */
-    text-align: center;
-  }
-  #proceedButton {
-    display: none;
-    opacity: 0;
-    transition: opacity 2s ease;
-    margin-top: 20px;
-  }
-  .headerContainer {
-    display: none;
-  }
-  .bigHeader {
-    font-size: 48px;
-    transform: rotate(-10deg);
-  }
+
   .background {
     width: 70%;
     animation: fadeInBackground 10s ease-in-out forwards;
@@ -93,14 +79,50 @@
       opacity: 1;
     }
   }
-
-  /* Styling for the dynamically displayed image */
   #imageContainer {
     position: fixed;
     top: 10px;
     right: 10px;
     transition: transform 2s ease;
   }
+
+  .background{
+    background-color: rgba(255, 255, 255, 0.795);
+    border-radius: 20px;
+    padding: 60px;
+  }
+
+
+  input[type="text"], input[type="password"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #8f8f8f;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
+  }
+
+  input[type="text"]:focus, input[type="password"]:focus {
+    background-color: #e0f7fa; /* Light blue when focused */
+    color: #333; /* Dark text color */
+  }
+
+  button {
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background-color: #4cae4c;
+  }
+
+
 
 </style>
 </head>
@@ -109,35 +131,42 @@
 <div class="background">
 
   <div class="intro">
-    <p class="ptext" id="introParagraph">
-      Welcome to our platform. To proceed, please enter your details as requested below. Your information is secure and will be used to ensure a personalized and efficient experience.
-    </p>
+      <h2>At the Dinner party were farah, Rachel, Vaidehi, Juliet, and Aishwarya.</h2>
+
+      <p>The women sat in a row. They all wore different colors and Vaidehi wore a jaunty red hat. Aishwaria was at the far left, next to the guest wearing a Purple jacket. The lady in White sat left of someone in Blue. I remember that White outfit because the woman spilled her Guava Rubicon all over it. The traveler from delhi was dressed entirely in Green. When one of the dinner guests bragged about her ring, the woman next to her said they were finer in delhi, where she lived.</p>
+
+      <p>Juliet showed off a prized Diamond, at which the lady from kerala scoffed, saying it was no match for her Bangles. Someone else carried a valuable cellphone and when she saw it, the visitor from dubai next to her almost spilled her neighbor's coke. Farah raised her water in toast(because she was on a diet). The lady from France, full of Protein shake, jumped up onto the table falling onto the guest in the center seat, spilling the poor woman's Fanta. Then Rachel captivated them all with a story about her wild youth in Britain.</p>
+
+      <p>In the morning there were four heirlooms under the table: Ring, Pendant, bangles, and cellphone.</p>
+
+      <h1>But who owned each?</h1>
+
   </div>
 
 
   <div class="container" id="formContainer">
     <div class="inpbox"> 
-      <label for="name">Name</label>
+      <label for="name">Farah</label>
       <input type="text" id="name" required>
     </div>
 
     <div class="inpbox">
-      <label for="password">Password</label>
+      <label for="password">Rachel</label>
       <input type="text" id="password" required>      
     </div>
 
     <div class="inpbox">
-      <label for="geName">GE NAME</label>
+      <label for="geName">Vaidehi</label>
       <input type="text" id="geName" required>
     </div>
 
     <div class="inpbox">
-      <label for="geName2">GE NAME</label>
+      <label for="geName2">Juliet</label>
       <input type="text" id="geName2" required>
     </div>
 
     <div class="inpbox">
-      <label for="geName3">GE NAME</label>
+      <label for="geName3">Aishwarya</label>
       <input type="text" id="geName3" required>
     </div>
   </div>
@@ -148,52 +177,23 @@
 
 </div>
 
-<div id="videoContainer" style="display:none;"></div>
-
-<button id="proceedButton" class="submit" onclick="showHeader()" style="display:none;">Proceed</button>
-
-<div class="headerContainer" id="headerContainer" style="display:none;">
-  <h1 class="bigHeader">Welcome to the Next Part!</h1>
-</div>
-
 <script>
   function validateForm() {
-    var name = document.getElementById('name').value;
-    var password = document.getElementById('password').value;
-    var geName1 = document.getElementById('geName').value;
-    var geName2 = document.getElementById('geName2').value;
-    var geName3 = document.getElementById('geName3').value;
+    var name = document.getElementById('name').value.toLowerCase();
+    var password = document.getElementById('password').value.toLowerCase();
+    var geName1 = document.getElementById('geName').value.toLowerCase();
+    var geName2 = document.getElementById('geName2').value.toLowerCase();
+    var geName3 = document.getElementById('geName3').value.toLowerCase();
 
-    if(name === 'a' && password === 'a' && geName1 === 'a' && geName2 === 'a' && geName3 === 'a') {
-      document.getElementById('introParagraph').style.display = 'none';
-      document.getElementById('formContainer').style.display = 'none';
-      document.querySelector('.submit-container').style.display = 'none';
-
-      // Display the image and animate it
-      var image = document.createElement('img');
-      image.src = '/assets/img/test.png'; // Replace 'your_image.png' with your image path
-      image.alt = 'Your Image';
-      image.id = 'imageContainer';
-      document.body.appendChild(image); // Append the image to the body
-
-      setTimeout(function() {
-        image.style.transform = 'translate(-50%, -50%) scale(0.5)'; // Move and scale the image
-        image.style.top = '10px';
-        image.style.right = '10px';
-      }, 100); // Start the animation after a delay
+    if(name === 'ring' && password === 'pendant' && geName1 === 'bangles' && geName2 === 'diamond' && geName3 === 'cellphone') {
+      // Redirect to the next page
+      window.location.href = 'next_page.html';
     } else {
       alert('Invalid input');
     }
   }
-
-  function showHeader() {
-    document.getElementById('videoContainer').innerHTML = ''; // Clear the video
-    document.getElementById('proceedButton').style.display = 'none';
-    
-    var headerContainer = document.getElementById('headerContainer');
-    headerContainer.style.display = 'block';
-  }
 </script>
+
 
 </body>
 </html>
