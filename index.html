@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
-<title>Login Form</title>
+<title>Riddle</title>
 
 <style>
   body {
@@ -36,14 +36,14 @@
   }
   button {
     padding: 10px;
-    background-color: #5cb85c;
+    background-color: hsl(120, 40%, 23%);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   button:hover {
-    background-color: #4cae4c;
+    background-color: hsl(120, 40%, 23%);
   }
   .inpbox {
     display: flex;
@@ -131,42 +131,42 @@
 <div class="background">
 
   <div class="intro">
-      <h2>At the Dinner party were farah, Rachel, Vaidehi, Juliet, and Aishwarya.</h2>
+    <h2 style="font-family: 'Raleway', sans-serif;">At the Dinner party were Farah, Rachel, Vaidehi, Juliet, and Aishwarya.</h2>
 
-      <p>The women sat in a row. They all wore different colors and Vaidehi wore a jaunty red hat. Aishwaria was at the far left, next to the guest wearing a Purple jacket. The lady in White sat left of someone in Blue. I remember that White outfit because the woman spilled her Guava Rubicon all over it. The traveler from delhi was dressed entirely in Green. When one of the dinner guests bragged about her ring, the woman next to her said they were finer in delhi, where she lived.</p>
+    <p style="font-family: 'Raleway', sans-serif;">The women sat in a row. They all wore different colors and Vaidehi wore a jaunty red hat. Aishwaria was at the far left, next to the guest wearing a Purple jacket. The lady in White sat left of someone in Blue. I remember that White outfit because the woman spilled her Guava Rubicon all over it. The traveler from delhi was dressed entirely in Green. When one of the dinner guests bragged about her ring, the woman next to her said they were finer in delhi, where she lived.</p>
 
-      <p>Juliet showed off a prized Diamond, at which the lady from kerala scoffed, saying it was no match for her Bangles. Someone else carried a valuable cellphone and when she saw it, the visitor from dubai next to her almost spilled her neighbor's coke. Farah raised her water in toast(because she was on a diet). The lady from France, full of Protein shake, jumped up onto the table falling onto the guest in the center seat, spilling the poor woman's Fanta. Then Rachel captivated them all with a story about her wild youth in Britain.</p>
+    <p style="font-family: 'Raleway', sans-serif;">Juliet showed off a prized Diamond, at which the lady from kerala scoffed, saying it was no match for her Bangles. Someone else carried a valuable cellphone and when she saw it, the visitor from dubai next to her almost spilled her neighbor's coke. Farah raised her water in toast(because she was on a diet). The lady from France, full of Protein shake, jumped up onto the table falling onto the guest in the center seat, spilling the poor woman's Fanta. Then Rachel captivated them all with a story about her wild youth in Britain.</p>
 
-      <p>In the morning there were four heirlooms under the table: Ring, Pendant, bangles, and cellphone.</p>
+    <p style="font-family: 'Raleway', sans-serif;">In the morning there were four heirlooms under the table: Ring, Pendant, bangles, and cellphone.</p>
 
-      <h1>But who owned each?</h1>
+    <h1 style="font-family: 'Raleway', sans-serif;">But who owned each?</h1>
 
   </div>
 
 
   <div class="container" id="formContainer">
     <div class="inpbox"> 
-      <label for="name">Farah</label>
+      <label for="name"><b>Farah</b></label>
       <input type="text" id="name" required>
     </div>
 
     <div class="inpbox">
-      <label for="password">Rachel</label>
+      <label for="password"><b>Rachel</b></label>
       <input type="text" id="password" required>      
     </div>
 
     <div class="inpbox">
-      <label for="geName">Vaidehi</label>
+      <label for="geName"><b>Vaidehi</b></label>
       <input type="text" id="geName" required>
     </div>
 
     <div class="inpbox">
-      <label for="geName2">Juliet</label>
+      <label for="geName2"><b>Juliet</b></label>
       <input type="text" id="geName2" required>
     </div>
 
     <div class="inpbox">
-      <label for="geName3">Aishwarya</label>
+      <label for="geName3"><b>Aishwarya</b></label>
       <input type="text" id="geName3" required>
     </div>
   </div>
@@ -186,8 +186,7 @@
     var geName3 = document.getElementById('geName3').value.toLowerCase();
 
     if(name === 'ring' && password === 'pendant' && geName1 === 'bangles' && geName2 === 'diamond' && geName3 === 'cellphone') {
-      // Redirect to the next page
-      window.location.href = 'next_page.html';
+      window.location.href = 'finalpage.html';
     } else {
       alert('Invalid input');
     }

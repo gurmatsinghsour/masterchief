@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riddle</title>
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  background-color: #B39C7F;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#image {
+  display: none; /* Initially hidden */
+  opacity: 0; /* Initially transparent */
+  transition: opacity 1s ease-in-out; /* Smooth fade effect */
+}
+
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <img id="image" src="/assets/img/test.png" alt="Image" onclick="goToNextPage()">
+  </div>
+  
+  <script>
+
+    function fadeInImage() {
+    const image = document.getElementById('image');
+    image.style.display = 'block';
+    setTimeout(function() {
+        image.style.opacity = '1';
+    }, 100); 
+    }
+
+    function goToNextPage() {
+    window.location.href = 'mostfinal.html';
+    }
+
+    window.onload = fadeInImage;
+
+  </script>
+</body>
+</html>
