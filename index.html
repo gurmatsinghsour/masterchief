@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+  body {
+    height: 768px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #B39C7F;
+  }
+
+  .container, .submit-container {
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    padding: 20px;
+  }
+  input[type="text"], input[type="password"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  button {
+    padding: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #4cae4c;
+  }
+  .inpbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  .submit-container {
+    width: 100%;
+  }
+  .submit {
+    width: auto; /* Change from 300px to auto for better sizing */
+  }
+  .intro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ptext {
+    font-size: 18px;
+    margin-bottom: 20px;
+    max-width: 600px; /* Ensures the paragraph isn't too wide */
+    text-align: center;
+  }
+  #proceedButton {
+    display: none;
+    opacity: 0;
+    transition: opacity 2s ease;
+    margin-top: 20px;
+  }
+  .headerContainer {
+    display: none;
+  }
+  .bigHeader {
+    font-size: 48px;
+    transform: rotate(-10deg);
+  }
+  .background {
+    width: 70%;
+    animation: fadeInBackground 10s ease-in-out forwards;
+  }
+  
+  @keyframes fadeInBackground {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* Styling for the dynamically displayed image */
+  #imageContainer {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    transition: transform 2s ease;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="background">
+
+  <div class="intro">
+    <p class="ptext" id="introParagraph">
+      Welcome to our platform. To proceed, please enter your details as requested below. Your information is secure and will be used to ensure a personalized and efficient experience.
+    </p>
+  </div>
+
+
+  <div class="container" id="formContainer">
+    <div class="inpbox"> 
+      <label for="name">Name</label>
+      <input type="text" id="name" required>
+    </div>
+
+    <div class="inpbox">
+      <label for="password">Password</label>
+      <input type="text" id="password" required>      
+    </div>
+
+    <div class="inpbox">
+      <label for="geName">GE NAME</label>
+      <input type="text" id="geName" required>
+    </div>
+
+    <div class="inpbox">
+      <label for="geName2">GE NAME</label>
+      <input type="text" id="geName2" required>
+    </div>
+
+    <div class="inpbox">
+      <label for="geName3">GE NAME</label>
+      <input type="text" id="geName3" required>
+    </div>
+  </div>
+
+  <div class="submit-container">
+    <button class="submit" onclick="validateForm()">Submit</button>
+  </div>
+
+</div>
+
+<div id="videoContainer" style="display:none;"></div>
+
+<button id="proceedButton" class="submit" onclick="showHeader()" style="display:none;">Proceed</button>
+
+<div class="headerContainer" id="headerContainer" style="display:none;">
+  <h1 class="bigHeader">Welcome to the Next Part!</h1>
+</div>
+
+<script>
+  function validateForm() {
+    var name = document.getElementById('name').value;
+    var password = document.getElementById('password').value;
+    var geName1 = document.getElementById('geName').value;
+    var geName2 = document.getElementById('geName2').value;
+    var geName3 = document.getElementById('geName3').value;
+
+    if(name === 'a' && password === 'a' && geName1 === 'a' && geName2 === 'a' && geName3 === 'a') {
+      document.getElementById('introParagraph').style.display = 'none';
+      document.getElementById('formContainer').style.display = 'none';
+      document.querySelector('.submit-container').style.display = 'none';
+
+      // Display the image and animate it
+      var image = document.createElement('img');
+      image.src = '/assets/img/test.png'; // Replace 'your_image.png' with your image path
+      image.alt = 'Your Image';
+      image.id = 'imageContainer';
+      document.body.appendChild(image); // Append the image to the body
+
+      setTimeout(function() {
+        image.style.transform = 'translate(-50%, -50%) scale(0.5)'; // Move and scale the image
+        image.style.top = '10px';
+        image.style.right = '10px';
+      }, 100); // Start the animation after a delay
+    } else {
+      alert('Invalid input');
+    }
+  }
+
+  function showHeader() {
+    document.getElementById('videoContainer').innerHTML = ''; // Clear the video
+    document.getElementById('proceedButton').style.display = 'none';
+    
+    var headerContainer = document.getElementById('headerContainer');
+    headerContainer.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
