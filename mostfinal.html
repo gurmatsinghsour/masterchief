@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riddle</title>
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+      overflow: hidden;
+      height: 100vh; /* Full viewport height */
+    }
     .flex {
       display: flex;
     }
@@ -17,27 +24,24 @@
     .justify-center {
       justify-content: center;
     }
-    .-mt-16 {
-      margin-top: -4
-    }
     .my-4 {
       margin-top: 1rem;
       margin-bottom: 1rem;
     }
     .text-4xl {
-      font-size: 2.25rem; 
+      font-size: 2.25rem;
     }
     .mr-4 {
       margin-right: 1rem;
     }
     .rounded {
-      border-radius: 0.25rem; 
+      border-radius: 0.25rem;
     }
     .bg-green-500 {
-      background-color: #34D399; 
+      background-color: #34D399;
     }
     .bg-red-500 {
-      background-color: #EF4444; 
+      background-color: #EF4444;
     }
     .px-4 {
       padding-left: 1rem;
@@ -54,28 +58,60 @@
       color: #ffffff;
     }
     .hover\:bg-green-700:hover {
-      background-color: #059669; 
+      background-color: #059669;
     }
     .hover\:bg-red-700:hover {
-      background-color: #991B1B; 
+      background-color: #991B1B;
+    }
+    .fadeIn {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    .stars {
+      position: absolute; /* Use absolute instead of fixed for better performance on some browsers */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      animation: fall linear infinite;
+    }
+
+    #yesButton {
+      z-index: 20;
+    }
+    #noButton {
+      z-index: 20;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fall {
+      from { transform: translateY(-2vh); }
+      to { transform: translateY(102vh); } /* Adjust to ensure stars fall from top to bottom */
     }
   </style>
 </head>
 <body>
-    <div id="uleyaContent" class="-mt-16 flex flex-col h-screen items-center justify-center">
-        <img src="https://gifdb.com/images/high/puss-in-boots-cute-face-m20e7zel9zr97k1l.gif" class="h-[200px]">
-        <h1 class="my-4 text-4xl">Woud you like to have a Amazon gift card?</h1>
-        <div class="flex items-center">
-          <button id="yesButton" class="mr-4 rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700" style="font-size: 16px;" onclick="handleYesClick()">Yes</button>
-          <button id="noButton" class="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700" onclick="handleNoClick()">No</button>
-        </div>
-      </div>
-      
-      <div id="uleyaMessage" style="display: none; text-align: center;">
-        <div class="my-4 text-4xl font-bold">For safety reasons, the code cannot be displayed here. Please contact Sai.</div>
-      </div>
+  <div class="stars fadeIn"></div>
+  <div class="flex flex-col items-center justify-center h-screen">
+    <img src="https://gifdb.com/images/high/puss-in-boots-cute-face-m20e7zel9zr97k1l.gif" class="my-4 h-[200px]" />
+    <h1 class="text-4xl text-white" style="font-size: 1.2em; padding: 1em; max-width: 80%;">Hello Madam, would you like a gift , HEAVY WARNING pressing NO can lead to UNTHINKABLE HORRORS ... Warning given be advised.</h1>
+    <div class="flex items-center my-4">
+      <button id="yesButton" class="mr-4 rounded bg-green-500 px-4 py-2 font-bold text-white hover\:bg-green-700" onclick="handleYesClick()">Yes</button>
+      <button id="noButton" class="rounded bg-red-500 px-4 py-2 font-bold text-white hover\:bg-red-700" onclick="handleNoClick()">No</button>
+    </div>
+  </div>
 
   <script>
+
     let noCount = 0;
     const phrases = [
       "No",
@@ -92,7 +128,7 @@
       "Estoy muerto",
       "I will never give up.",
     ];
-  
+
     const handleNoClick = () => {
       const noButton = document.getElementById('noButton');
       const yesButton = document.getElementById('yesButton');
@@ -105,11 +141,28 @@
       const yesButtonSize = noCount * 20 + 16;
       yesButton.style.fontSize = `${yesButtonSize}px`;
     };
-  
+
+
+    const starsContainer = document.querySelector('.stars');
+
+    function randomRange(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = `${randomRange(0, 100)}vw`;
+      star.style.top = `${randomRange(0, 100)}vh`;
+      star.style.animationDuration = `${randomRange(5, 20)}s`;
+      star.style.animationDelay = `${randomRange(0, 20)}s`;
+      starsContainer.appendChild(star);
+    }
+
     const handleYesClick = () => {
-      document.getElementById('uleyaContent').style.display = 'none';
-      document.getElementById('uleyaMessage').style.display = 'block';
+      window.location.href = 'thefinallyllpage.html';
     };
+
   </script>
   
 </body>

@@ -6,53 +6,95 @@
   <title>Riddle</title>
   <style>
     body {
-  margin: 0;
-  padding: 0;
-  background-color: #B39C7F;
-}
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+      overflow: hidden;
+    }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative; /* To ensure it's above stars */
+      z-index: 2; /* Higher than stars */
+    }
 
-#image {
-  display: none; /* Initially hidden */
-  opacity: 0; /* Initially transparent */
-  transition: opacity 1s ease-in-out; /* Smooth fade effect */
-}
+    #image {
+      display: none; /* Initially hidden */
+      opacity: 0; /* Initially transparent */
+      transition: opacity 1s ease-in-out; /* Smooth fade effect */
+      max-height: 70vh; /* Limit the size to be within viewport */
+      cursor: pointer; /* Change to pointer to indicate clickable */
+    }
 
-#image:hover {
-   height: 70vh;
-   cursor: grab;
-}
+    #image:hover {
+      transform: scale(1.1); /* Gentle scaling effect on hover */
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1; /* Behind the container */
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      animation: fall linear infinite;
+    }
+
+    /* Define the fall animation */
+    @keyframes fall {
+      0% { transform: translate(0, -2px); }
+      100% { transform: translate(100vw, 100vh); }
+    }
 
   </style>
-
 </head>
 <body>
+  <div class="stars"></div>
   <div class="container">
     <img id="image" src="/assets/img/test.png" alt="Image" onclick="goToNextPage()">
   </div>
   
   <script>
+    const starsContainer = document.querySelector('.stars');
+
+    function randomRange(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = `${randomRange(0, 100)}vw`;
+      star.style.top = `${randomRange(0, 100)}vh`;
+      star.style.animationDuration = `${randomRange(5, 20)}s`;
+      star.style.animationDelay = `${randomRange(0, 20)}s`;
+      starsContainer.appendChild(star);
+    }
 
     function fadeInImage() {
-    const image = document.getElementById('image');
-    image.style.display = 'block';
-    setTimeout(function() {
+      const image = document.getElementById('image');
+      image.style.display = 'block';
+      setTimeout(function() {
         image.style.opacity = '1';
-    }, 100); 
+      }, 100); 
     }
 
     function goToNextPage() {
-    window.location.href = 'mostfinal.html';
+      window.location.href = 'mostfinal.html'; // Ensure this file exists at this path
     }
 
     window.onload = fadeInImage;
-
   </script>
 </body>
 </html>
