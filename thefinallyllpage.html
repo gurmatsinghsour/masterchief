@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Riddle</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Jacquard+24&family=Seymour+One&display=swap" rel="stylesheet">
   <style>
     body, html {
       height: 100%;
@@ -29,7 +32,8 @@
 
     .message {
       font-size: 1.2em;
-      padding: 1em;
+      padding: 0 1em;
+
       max-width: 80%;
     }
 
@@ -37,6 +41,12 @@
       width: 250px;
       height: auto;
       margin: 20px 0;
+    }
+
+    .header-text {
+      font-size: 5em;
+      font-weight: bold;
+      margin-bottom: 20px;
     }
 
     .stars {
@@ -62,17 +72,30 @@
         transform: translate(100vw, 100vh);
       }
     }
+
+    .seum {
+      font-family: 'Dancing Script', system-ui;
+    }
+
+    .seum:hover{
+      font-size: 50px;
+      font-weight: bold;
+      color: white;
+    }
+
+
   </style>
 </head>
 <body>
 <div class="stars"></div>
 <div class="content">
   <img src="/assets/img/eid.png" alt="Eid Moon and Mosque" class="eid-image">
+  <h1 class="header-text"><span style="font-size: medium;">Belated</span> عيد مبارك</h1>
   <p class="message">
     Wow, you really raced through that puzzle! 
     But, oops, looks like you're way ahead of time – Eid is still a whole year away. 
-    Even though you're a bit late by the calendar, you've earned yourself a reward. 
-    Just head over to Kwaish and say "SUMMON THE HASHIRAS"
+    Even though you're a bit early by the calendar, you've earned yourself a reward. 
+    Just head over to Kwaish and say <span class="seum">"SUMMON THE HASHIRAS"</span>
   </p>
 </div>
 <script>
